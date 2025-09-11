@@ -1,17 +1,18 @@
-/*В зависимости от языка пользователя, вывести в консоль соответствующие приветствия.*/
-const lang = navigator.language;
+/*Написать код (одной строкой), который позволяет проверить возможность 
+вести машину по следующим параметрам:
 
-switch (true) {
-  case lang == 'ru':
-    console.log('Привет!');
-    break;
+hasLicence - имеет права
+age - возраст
+isDrunk - пьян
+Пользователь может вести машину только если ему больше =  18 лет, 
+он имеет права и не пьян. Если может – вернуть ‘может’, если нет – ‘не может’.*/
 
-  case lang == 'en':
-    console.log('Hello!');
-    break;
+const hasLicence = true;
+const age = 20;
+const isDrunk = false;
 
-  case lang == 'de':
-    console.log('Gutten tag!');
-    break;
-}
-//console.log(lang);
+console.log(
+  `Пользователь ${
+    hasLicence && age >= 18 && !isDrunk ? 'может' : 'не может'
+  } вести машину.`
+);
