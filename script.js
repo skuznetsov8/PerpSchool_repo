@@ -1,18 +1,66 @@
-/*Написать код (одной строкой), который позволяет проверить возможность 
-вести машину по следующим параметрам:
+function valuta(money, currency, newValuta) {
+  let kurs;
+  let newMoney;
+  switch (newValuta) {
+    case 'rub':
+    case 'usd':
+    case 'eur':
+    case 'gbp':
+      switch (currency) {
+        case 'rub':
+          newValuta == 'usd'
+            ? (kurs = Number(100))
+            : newValuta == 'eur'
+            ? (kurs = Number(120))
+            : newValuta == 'gbp'
+            ? (kurs = Number(150))
+            : (kurs = null);
 
-hasLicence - имеет права
-age - возраст
-isDrunk - пьян
-Пользователь может вести машину только если ему больше =  18 лет, 
-он имеет права и не пьян. Если может – вернуть ‘может’, если нет – ‘не может’.*/
+          console.log(`Курс 1 ${currency} = ${kurs} ${newValuta}`);
+          break;
+        case 'usd':
+          newValuta == 'rub'
+            ? (kurs = Number(100))
+            : newValuta == 'eur'
+            ? (kurs = Number(1.1))
+            : newValuta == 'gbp'
+            ? (kurs = Number(1.5))
+            : (kurs = null);
+          console.log(`Курс 1 ${currency} = ${kurs} ${newValuta}`);
+          break;
+        case 'eur':
+          newValuta == 'usd'
+            ? (kurs = Number(0.3))
+            : newValuta == 'rub'
+            ? (kurs = Number(200))
+            : newValuta == 'gbp'
+            ? (kurs = Number(0.7))
+            : (kurs = null);
+          console.log(`Курс 1 ${currency} = ${kurs} ${newValuta}`);
+          break;
+        case 'gbp':
+          newValuta == 'usd'
+            ? (kurs = Number(0.5))
+            : newValuta == 'eur'
+            ? (kurs = Number(0.8))
+            : newValuta == 'rub'
+            ? (kurs = Number(300))
+            : (kurs = null);
+          console.log(`Курс 1 ${currency} = ${kurs} ${newValuta}`);
+          break;
+        default:
+          kurs = null;
+          console.log('Такую валюту не умеем');
+      }
 
-const hasLicence = true;
-const age = 20;
-const isDrunk = false;
+      newMoney = money * kurs;
+      console.log(newMoney);
+      break;
+    default:
+      console.log('Такую валюту не умеем');
+      newMoney = null;
+      break;
+  }
+}
 
-console.log(
-  `Пользователь ${
-    hasLicence && age >= 18 && !isDrunk ? 'может' : 'не может'
-  } вести машину.`
-);
+valuta(150, 'gbp', 'rub');
