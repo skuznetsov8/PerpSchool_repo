@@ -7,7 +7,7 @@ function valuta(money, currency, newValuta) {
     case 'eur':
     case 'gbp':
       if (currency === newValuta) {
-        kurs === 1;
+        kurs = 1;
         console.log(`Курс 1 ${currency} = 1 ${newValuta}`);
         break;
       } else {
@@ -59,13 +59,14 @@ function valuta(money, currency, newValuta) {
         }
       }
       newMoney = money * kurs;
-      return newMoney;
       console.log(newMoney);
+      return newMoney;
       break;
+
     default:
       console.log('Такую валюту не умеем');
-      //newMoney = null;
-      return null;
+      newMoney = null;
+      return newMoney;
       break;
   }
 }
