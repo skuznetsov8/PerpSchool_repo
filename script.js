@@ -27,10 +27,11 @@ function crypto(pass) {
   return cryptoPass;
 }
 
-//crypto(pass1);
+const cryptoPass = crypto(pass1);
+console.log(cryptoPass);
 
-function check(pass, checkpass) {
-  const oldPass = crypto(pass).split('');
+function check(checkpass, pass) {
+  const oldPass = cryptoPass.split('');
   //console.log(oldPass);
   const mm = oldPass.splice(-4, 4);
   //console.log(mm);
