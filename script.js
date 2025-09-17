@@ -30,7 +30,7 @@ function crypto(pass) {
 
 crypto(pass1);
 
-function decrypto(pass, checkpass) {
+function check(pass, checkpass) {
   const oldPass = crypto(pass).split('');
   //console.log(oldPass);
   const mm = oldPass.splice(-4, 4);
@@ -49,4 +49,4 @@ function decrypto(pass, checkpass) {
   return deCryptopass;
 }
 
-decrypto(pass1, pass2);
+check(pass1, pass2);
