@@ -23,15 +23,15 @@ function crypto(pass) {
   //console.log(mas);
   //console.log(mm);
   const cryptoPass = mm.concat(mas).join('');
-  //console.log(mm.concat(mas).join(''));
+  //console.log(cryptoPass);
   return cryptoPass;
 }
 
-const cryptoPass = crypto(pass1);
-console.log(cryptoPass);
+const cryptoPass = crypto('password');
+console.log(`Зашифрованный пароль - ${cryptoPass}`);
 
 function check(checkpass, pass) {
-  const oldPass = cryptoPass.split('');
+  const oldPass = checkpass.split('');
   //console.log(oldPass);
   const mm = oldPass.splice(-4, 4);
   //console.log(mm);
@@ -41,12 +41,13 @@ function check(checkpass, pass) {
   mm[1] = el2;
   mm[2] = el1;
 
+  const checkedPass = mm.concat(oldPass).reverse().join('');
+  //console.log(checkedPass);
   //console.log(mm);
-  const deCryptopass =
-    checkpass === mm.concat(oldPass).reverse().join('') ? true : false;
-  //console.log(mm.concat(oldPass).reverse().join(''));
-  console.log(deCryptopass);
-  return deCryptopass;
+  const isChecked = checkedPass === pass ? true : false;
+  //console.log(checkpass);
+  console.log(isChecked);
+  return isChecked;
 }
 
-check(pass1, pass2);
+check('ssapdorw', 'password');
