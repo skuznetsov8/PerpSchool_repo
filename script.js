@@ -22,13 +22,12 @@ function crypto(pass) {
   mas[2] = el1;
   //console.log(mas);
   //console.log(mm);
-  //console.log(mm2);
   const cryptoPass = mm.concat(mas).join('');
-  //console.log(cryptoPass);
+  //console.log(mm.concat(mas).join(''));
   return cryptoPass;
 }
 
-crypto(pass1);
+//crypto(pass1);
 
 function check(pass, checkpass) {
   const oldPass = crypto(pass).split('');
