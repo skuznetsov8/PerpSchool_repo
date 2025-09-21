@@ -1,53 +1,23 @@
-/*Написать 2 функции:
+const arr = [1, 40, -5, 10, 0];
 
-шифратор пароля - функция принимает пароль, разбивает по символам, меняет местами 
-какие-то буквы по заданному алгоритму и возвращает строку.
-проверка пароля - принимает зашифрованный пароль и второй пароль. Воспроизводит алгоритм назад 
-на зашифрованном пароле и возвращает true, если он совпадает со втором паролем и false, если нет.
-crypto(‘password’) -> ssapdorw
-      password
-check(‘ssapdorw’, ‘password’) -> true
-
-check(‘ssapdorw’, ‘wrong’) -> false*/
-const pass1 = 'password';
-const pass2 = 'password';
-
-function crypto(pass) {
-  const mas = pass.split('').reverse();
-  //console.log(mas);
-  const mm = mas.splice(-4, 4);
-  const el1 = mas.slice(1, 2).join('');
-  const el2 = mas.slice(2, 3).join('');
-  mas[1] = el2;
-  mas[2] = el1;
-  //console.log(mas);
-  //console.log(mm);
-  const cryptoPass = mm.concat(mas).join('');
-  //console.log(cryptoPass);
-  return cryptoPass;
+function sortArray(array) {
+  const result = [];
+  for (const el of array) {
+    console.log(el);
+    let inserted = false;
+    for (let i of result) {
+      if (el >= result[i]) {
+        result.splice(i, 0, el);
+        console.log(result.splice(i, 0, el));
+        inserted = true;
+        break;
+      }
+    }
+    if (!inserted) {
+      result.push(el);
+    }
+  }
+  return result;
 }
 
-const cryptoPass = crypto('password');
-console.log(`Зашифрованный пароль - ${cryptoPass}`);
-
-function check(checkpass, pass) {
-  const oldPass = checkpass.split('');
-  //console.log(oldPass);
-  const mm = oldPass.splice(-4, 4);
-  //console.log(mm);
-  //console.log(oldPass);
-  const el1 = mm.slice(1, 2).join('');
-  const el2 = mm.slice(2, 3).join('');
-  mm[1] = el2;
-  mm[2] = el1;
-
-  const checkedPass = mm.concat(oldPass).reverse().join('');
-  //console.log(checkedPass);
-  //console.log(mm);
-  const isChecked = checkedPass === pass ? true : false;
-  //console.log(checkpass);
-  console.log(isChecked);
-  return isChecked;
-}
-
-check('ssapdorw', 'password');
+console.log(sortArray(arr)); // [40, 10, 1, 0, -5]
