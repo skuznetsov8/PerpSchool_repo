@@ -1,30 +1,33 @@
-const arr = [1, 40, -5, 10, 0];
+function sortWithLoops(arr) {
+  // создаем копию массива, чтобы не мутировать исходный
+  const newArray = arr.slice();
 
-function sortArray(array) {
-  const result = [];
-  //перебираем исходный массив
-  for (const el of array) {
-    //console.log(` el - ${el}`);
-    let inserted = false;
-    //перебираем новый массив
-    for (let i = 0; i < result.length; i++) {
-      //console.log(`i - ${result[i]}`);
-      //сравниваем элементы старого и нового массивов
-      if (el >= result[i]) {
-        //console.log(`!!! ${el} > ${result[i]}`);
-        result.splice(i, 0, el);
-        //console.log(mass3);
-        inserted = true;
-        //console.log(inserted);
-        break;
+  // внешний цикл по позициям от начала до предпоследней
+  for (let i = 0; i < newArray.length - 1; i++) {
+    // предполагаем наименьший элемент текущей подстановки
+    console.log(`i = ${i}`);
+    let minIndex = i;
+
+    // внутренний цикл ищет минимальный элемент в оставшейся части
+    for (let j = i + 1; j < newArray.length; j++) {
+      console.log(`- j = ${j}`);
+      if (newArray[j] < newArray[minIndex]) {
+        console.log(`!!! ${newArray[j]} < ${newArray[minIndex]}`);
+        minIndex = j;
       }
     }
-    if (!inserted) {
-      result.push(el);
-      //console.log(`Push - ${el}`);
+
+    // обмен, если найден элемент меньше текущего
+    if (minIndex !== i) {
+      const tmp = newArray[i];
+      newArray[i] = newArray[minIndex];
+      newArray[minIndex] = tmp;
     }
   }
-  return result;
+
+  return newArray;
 }
 
-console.log(sortArray(arr)); // [40, 10, 1, 0, -5]
+// Пример:
+const arr = [1, 40, -5, 10, 0];
+console.log(sortWithLoops(arr)); // [-5, 0, 1, 10, 40]
